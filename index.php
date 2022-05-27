@@ -12,8 +12,8 @@
 <head>
     <title>Backathon | Home</title>
 
+    <?php include "basic-head.php"; ?>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <div class="title-wrapper">
