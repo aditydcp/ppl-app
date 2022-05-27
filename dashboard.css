@@ -1,2 +1,81 @@
 @import "main.css";
 
+section {
+    padding: 4rem 24rem;
+}
+
+input {
+    font-family: 'SF Pro Display';
+    font-size: 1rem;
+}
+
+.title-wrapper {
+    margin: 4rem 0 1rem 0;
+}
+
+.title-main {
+    font-size: 3em;
+    font-style: italic;
+    font-weight: 700;
+    margin: 0;
+}
+
+#welcome {
+    margin: 4 0 0 0;
+    font-weight: 500;
+}
+
+.img-wrapper {
+    padding: .5rem 4rem;
+}
+
+#foto-ganteng {
+    border-radius: 72px;
+}
+
+.notification-wrapper {
+    margin: .5rem 0 0 0;
+    padding: 1rem 0;
+    border: 0.1rem solid;
+    border-radius: 16px;
+    display: block;
+}
+
+.notification {
+    border-color: rgba(255, 144, 0, 1);
+    background-color: rgba(255, 144, 0, 0.1);
+    color: rgba(255, 144, 0, 1);
+}
+
+.warning {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+}
+
+.success {
+    border-color: green;
+    background-color: rgba(0, 255, 0, 0.1);
+    color: green;
+}
+
+.input-wrapper, .input-label, .form-control-file, .action-button, .input-description {
+    display: block;
+}
+
+.input-wrapper {
+    margin: 1rem 0;
+}
+
+.input-description {
+    margin: 0;
+}
+
+.form-control-file {
+    width: 30%;
+    margin: auto;
+}
+
+.action-button {
+    margin: 1rem 0 0.5rem 0;
+}
