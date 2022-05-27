@@ -1,3 +1,13 @@
+<?php
+
+    require "auth.php";
+
+    if (isset($_SESSION["email"])) {
+        header("Location: /dashboard");
+    }
+
+?>
+
 <html>
 <head>
     <title>Backathon | Home</title>
@@ -14,21 +24,28 @@
     <?php if(isset($_GET["login"])) { // login form, if parameter passed ?>
         <form action="" method="POST" class="form">
             <h2 id="line-register"> Login </h2>
+
+            <div class="input-wrapper alert-wrapper">
+                <?php if (count($errors) > 0) {
+                    foreach ($errors as $errorMsg) { ?>
+                        <p class="alert-message mg-0"><?= $errorMsg ?></p>
+                <?php }} ?>
+            </div>
             
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
-                <input type="email" name="email" class="input-field" required>
+                <input type="email" name="email" class="input-field" >
             </label>
 
             <label class="input-wrapper">
                 <span class="input-label">Password</span>
-                <input type="password" name="password" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" required>
+                <input type="password" name="password" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" >
             </label>
                 
             <button type="submit" name="login_form" class="button action-button">Login</button>
             
             <div class="input-wrapper">
-                <p class="desc">Belum daftar? <a href="index.php">Daftar dulu aih</a></p> 
+                <p class="desc form-switch">Belum daftar? <a href="index.php">Daftar dulu aih</a></p> 
             </div>
         </form>
     
@@ -39,6 +56,13 @@
 
         <form action="" method="POST" class="form">
             <h2 class="mg-0" id="line-register"> Daftarkan dirimu sekarang! </h2>
+
+            
+                <?php if (count($errors) > 0) {
+                    foreach ($errors as $errorMsg) { ?>
+                        <p class="alert-message"><?= $errorMsg ?></p>
+                <?php }} ?>
+            
 
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
@@ -80,7 +104,7 @@
             <button type="submit" name="register_form" class="button action-button">Sign Up</button>
 
             <div class="input-wrapper">
-                <p class="desc">Sudah mendaftar? <a href="index.php?login">Sini masuk</a></p> 
+                <p class="desc form-switch">Sudah mendaftar? <a href="index.php?login">Sini masuk</a></p> 
             </div>
         </form>
     <?php } ?>
