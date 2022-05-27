@@ -46,6 +46,15 @@
 /* ------  end  ------- */
 /* TYPEFACE DECLARATION */
 
+:root {
+    /* COLOR DECLARATION */
+    --nesco-black: #1d1c21;
+    --nesco-gray: #d3d3d4;
+    --nesco-lightgray: #f1f3f6;
+    --nesco-green: #18cba4;
+    --nesco-blue: #02c0df;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -56,12 +65,28 @@ body {
     font-family: 'SF Pro Display';
 }
 
-.main-title {
-    font-size: 4em;
-    margin: 2rem 0;
+.mg-0 {
+    margin: 0;
 }
 
 .desc {
     font-size: 16;
 }
 
+.form {
+    margin: 2rem 20rem;
+    padding: 2rem;
+    border: 0.25em solid var(--nesco-black);
+    border-radius: 25px;
+}
+
+.button {
+    border: 1em;
+    height: 3rem;
+    font-family: 'SF Pro Display';
+    font-size: 1.2rem;
+}
+
+.action-button {
+    width: 100%;
+}

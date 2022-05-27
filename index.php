@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="title-box">
+    <div class="title-wrapper">
         <h1 class="title-main">Backathon</h1>
-        <span class="title-subtitle">Mundur perlahan</span>
+        <span class="title-subtitle">Mundur perlahan...</span>
     </div>
 
     <?php if(isset($_GET["login"])) { // login form, if parameter passed ?>
-        Hello, ini login form
-        
         <form action="" method="POST" class="form">
+            <h2 id="line-register"> Login </h2>
+            
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
-                <input type="email" name="email" class="input-field" value="<?php echo $email; ?>" required>
+                <input type="email" name="email" class="input-field" required>
             </label>
 
             <label class="input-wrapper">
@@ -26,34 +26,39 @@
             </label>
                 
             <button type="submit" name="login_form" class="button action-button">Login</button>
+            
+            <div class="input-wrapper">
+                <p class="desc">Belum daftar? <a href="index.php">Daftar dulu aih</a></p> 
+            </div>
         </form>
     
     <?php
     } else { // register form, default state ?> 
 
-        <h3> Daftarkan dirimu sekarang! </h3>
-        <p>Ikuti Backathon dan menangkan hingga ratusan rupiah!<p>
+        <p class="desc mg-0">Ikuti Backathon dan menangkan uang tunai hingga ratusan rupiah dan respect!</p>
 
         <form action="" method="POST" class="form">
+            <h2 class="mg-0" id="line-register"> Daftarkan dirimu sekarang! </h2>
+
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
-                <input type="email" name="email" class="input-field" value="<?php echo $email; ?>" required>
+                <input type="email" name="email" class="input-field" required>
             </label>
 
             <label class="input-wrapper" id="namaWrapper">
                 <span class="input-label">Nama</span>
-                <input type="text" name="nama" class="input-field" value="<?php echo $nama; ?>" required>
+                <input type="text" name="nama" class="input-field" required>
             </label>
 
             <label class="input-wrapper">
                 <span class="input-label">Asal sekolah/institusi</span>
-                <input type="text" name="asal" class="input-field" value="<?php echo $institusi; ?>" required>
+                <input type="text" name="asal" class="input-field" required>
             </label>        
         
             <div class="input-wrapper">
-                <label class="input-wrapper">
+                <label class="input-wrapper password-field-wrapper">
                     <span class="input-label">Password</span>
-                    <input type="password" name="password1" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" required autocomplete="new-password" aria-describedby="password-help-block">
+                    <input type="password" name="password1" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" required aria-describedby="password-help-block">
                 </label>
         
                 <p class="input-description" id="password-help-block">
@@ -62,9 +67,9 @@
             </div>
         
             <div class="input-wrapper">
-                <label class="input-wrapper">
+                <label class="input-wrapper password-field-wrapper">
                     <span class="input-label">Konfirmasi password</span>
-                    <input type="password" name="password2" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" required autocomplete="new-password" aria-describedby="confirm-password-help-block">
+                    <input type="password" name="password2" pattern="^[0-9a-zA-Z]*$" minlength="8" maxlength="20" class="input-field" required aria-describedby="confirm-password-help-block">
                 </label>
         
                 <p class="input-description" id="confirm-password-help-block">
@@ -73,6 +78,10 @@
             </div>
                 
             <button type="submit" name="register_form" class="button action-button">Sign Up</button>
+
+            <div class="input-wrapper">
+                <p class="desc">Sudah mendaftar? <a href="index.php?login">Sini masuk</a></p> 
+            </div>
         </form>
     <?php } ?>
     

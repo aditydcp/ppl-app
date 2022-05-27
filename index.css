@@ -1,0 +1,61 @@
+@import "main.css";
+
+.title-wrapper {
+    margin: 4rem 0;
+}
+
+.title-main {
+    font-size: 5em;
+    font-style: italic;
+    font-weight: 700;
+    margin: 0;
+}
+
+.title-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    padding-left: 7rem;
+}
+
+.input-wrapper, .input-label, .input-field, .action-button {
+    display: block
+}
+
+.input-wrapper{
+    margin: 1rem 0;
+}
+
+.input-wrapper .password-field-wrapper{
+    margin-bottom: 0;
+}
+
+.input-label, .input-description {
+    text-transform: lowercase;
+    color: rgba(0, 0, 0, 0.5);
+    transform: color 0.2s;
+    margin: 0;
+}
+
+.input-wrapper:focus-within .input-label {
+    color: black;
+}
+
+.input-field {
+    /* Resets */
+    background-color: transparent;
+    border: none;
+    width: 100%;
+
+    border-bottom: 0.15em solid var(--nesco-black);
+    padding: 0.5em;
+
+    font-family: 'SF Pro Display';
+
+    transition: border-bottom-color 0.2s, background-color 0.25s;
+}
+
+.input-field:focus {
+        border: none; /* Reset */
+        background-color: white;
+        border-bottom-color: var(--nesco-green);
+}
