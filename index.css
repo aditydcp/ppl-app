@@ -21,19 +21,26 @@
     display: block
 }
 
-.input-wrapper{
+.input-wrapper {
     margin: 1rem 0;
 }
 
-.input-wrapper .password-field-wrapper{
+.input-wrapper .password-field-wrapper {
     margin-bottom: 0;
 }
 
 .input-label, .input-description {
-    text-transform: lowercase;
     color: rgba(0, 0, 0, 0.5);
     transform: color 0.2s;
     margin: 0;
+}
+
+.input-label {
+    text-transform: capitalize;
+}
+
+.input-description {
+    text-transform: lowercase;
 }
 
 .input-wrapper:focus-within .input-label {
@@ -55,7 +62,22 @@
 }
 
 .input-field:focus {
-        border: none; /* Reset */
-        background-color: white;
-        border-bottom-color: var(--nesco-green);
+    border: none; /* Reset */
+    background-color: white;
+    border-bottom-color: var(--nesco-green);
+}
+
+.form-switch {
+    margin-bottom: 0;
+}
+
+.alert-wrapper {
+    padding: 1rem 0;
+    border: 0.1rem solid red;
+    border-radius: 16px;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.alert-message {
+    color: red;
 }
