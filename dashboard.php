@@ -4,11 +4,11 @@
     require_once "connect.php";
 
     if (!isset($_SESSION["email"])) {
-        header("Location: /?login");
+        header("Location: /ppl-app/index.php?login");
     }
 
     // fetch account data
-    $accountQueryString = "SELECT * from users WHERE email='{$_SESSION['email']}' LIMIT 1";
+    $accountQueryString = "SELECT * from competitors WHERE email='{$_SESSION['email']}' LIMIT 1";
     $accountQueryResult = mysqli_query($conn, $accountQueryString);
     $accountData = mysqli_fetch_assoc($accountQueryResult);
 
@@ -30,7 +30,7 @@
             <h2> <?= "Lengkapi identitasmu"; ?> </h2>
         <?php } ?>
 
-        <img id="foto-ganteng" src="assets-img-placeholder_photo" alt="Si ganteng">
+        <img id="foto-ganteng" src="assets-img-placeholder_photo.jpg" alt="Si ganteng" height="400">
 
         <form action="" method="POST">
             <label class="input-wrapper" id="photoWrapper">

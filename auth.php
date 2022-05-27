@@ -68,7 +68,7 @@ if (isset($_POST['register_form'])) {
 
     // check the database to make sure 
     // a user does not already exist with the same username and/or email
-    $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM competitors WHERE email='$email' LIMIT 1";
     $uc_result = mysqli_query($conn, $user_check_query);
 
     if (mysqli_fetch_assoc($uc_result)) { // if user exists
@@ -81,7 +81,7 @@ if (isset($_POST['register_form'])) {
         $password_1 = md5($password_1); //encrypt the password before saving in the database
         
         //add user into database
-        $user_query = "INSERT INTO users (
+        $user_query = "INSERT INTO competitors (
             email,
             password,
             name,
@@ -90,13 +90,13 @@ if (isset($_POST['register_form'])) {
             '$email',
             '$password_1',
             '$nama',
-            '$institusi',
+            '$institusi'
         )";
         mysqli_query($conn, $user_query);
 
         $_SESSION['email'] = $email;
 
-        header('location: dashboard.php'); // go to dashboard
+        header('location: /ppl-app/dashboard.php'); // go to dashboard
     }
 }
 
@@ -117,11 +117,11 @@ if (isset($_POST['login_form'])) {
   
     if (count($errors) == 0) {
         $password = md5($password);
-        $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+        $query = "SELECT * FROM competitors WHERE email='$email' AND password='$password'";
         $results = mysqli_query($conn, $query);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['email'] = $email;
-          header('Location: /dashboard'); //go to dashboard
+          header('Location: /ppl-app/dashboard.php'); //go to dashboard
         }else {
           $errors[] = "Email atau Password salah";
         }

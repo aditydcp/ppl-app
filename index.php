@@ -3,7 +3,7 @@
     require "auth.php";
 
     if (isset($_SESSION["email"])) {
-        header("Location: /dashboard");
+        header("Location: /ppl-app/dashboard.php");
     }
 
 ?>
