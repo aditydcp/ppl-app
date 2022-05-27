@@ -23,14 +23,15 @@
 
     <?php if(isset($_GET["login"])) { // login form, if parameter passed ?>
         <form action="" method="POST" class="form">
-            <h2 id="line-register"> Login </h2>
+            <h2 class="mg-0"> Login </h2>
 
-            <div class="input-wrapper alert-wrapper">
-                <?php if (count($errors) > 0) {
-                    foreach ($errors as $errorMsg) { ?>
+            <?php if (count($errors) > 0) { ?>
+                <div class="input-wrapper alert-wrapper">
+                    <?php foreach ($errors as $errorMsg) { ?>
                         <p class="alert-message mg-0"><?= $errorMsg ?></p>
-                <?php }} ?>
-            </div>
+                    <?php } ?>
+                </div>
+            <?php } ?>
             
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
@@ -55,14 +56,15 @@
         <p class="desc mg-0">Ikuti Backathon dan menangkan uang tunai hingga ratusan rupiah dan respect!</p>
 
         <form action="" method="POST" class="form">
-            <h2 class="mg-0" id="line-register"> Daftarkan dirimu sekarang! </h2>
-
+            <h2 class="mg-0"> Daftarkan dirimu sekarang! </h2>
             
-                <?php if (count($errors) > 0) {
-                    foreach ($errors as $errorMsg) { ?>
-                        <p class="alert-message"><?= $errorMsg ?></p>
-                <?php }} ?>
-            
+            <?php if (count($errors) > 0) { ?>
+                <div class="input-wrapper alert-wrapper">
+                    <?php foreach ($errors as $errorMsg) { ?>
+                        <p class="alert-message mg-0"><?= $errorMsg ?></p>
+                    <?php } ?>
+                </div>
+            <?php } ?>
 
             <label class="input-wrapper" id="emailWrapper">
                 <span class="input-label">Email</span>
