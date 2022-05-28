@@ -12,7 +12,7 @@
     $accountQueryResult = mysqli_query($conn, $accountQueryString);
     $accountData = mysqli_fetch_assoc($accountQueryResult);
 
-    //include "file-handler.php";
+    require "file-handler.php";
 ?>
 
 <html>
@@ -81,6 +81,15 @@
         <?php } ?>
 
         <form action="" method="POST">
+
+            <?php if ((count($errors) > 0) && (isset($_POST['file_form']))) { ?>
+                <div class="notification-wrapper warning">
+                    <?php foreach ($errors as $errorMsg) { ?>
+                        <p class="form-alert mg-0"><?= $errorMsg ?></p>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+
             <label class="input-wrapper" id="fileWrapper">
                 <?php if($accountData['file_flag'] == 3) { ?>
                     <span class="input-label">Upload new file</span>

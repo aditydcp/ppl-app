@@ -76,6 +76,10 @@ input {
     margin: auto;
 }
 
+.form-alert {
+    font-size: small;
+}
+
 .action-button {
     margin: 1rem 0 0.5rem 0;
 }
