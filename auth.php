@@ -78,8 +78,6 @@ if (isset($_POST['register_form'])) {
 
     // Finally, register user if there are no errors in the form
     if (count($errors) == 0) {
-        $password_1 = md5($password_1); //encrypt the password before saving in the database
-        
         //add user into database
         $user_query = "INSERT INTO competitors (
             email,
@@ -116,7 +114,6 @@ if (isset($_POST['login_form'])) {
     }
   
     if (count($errors) == 0) {
-        $password = md5($password);
         $query = "SELECT * FROM competitors WHERE email='$email' AND password='$password'";
         $results = mysqli_query($conn, $query);
         if (mysqli_num_rows($results) == 1) {
