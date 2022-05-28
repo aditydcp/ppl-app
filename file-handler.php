@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once 'connect.php';
 
 $email = $_SESSION['email'];
@@ -22,7 +22,7 @@ ini_set('max_input_time', 900);
 ini_set('max_execution_time', 900);
 
 // Prepare the upload directory
-$user_root_dir = "/ppl-app";
+$user_root_dir = "/xampp/htdocs/ppl-app";
 // create directory if not exist
 if (!file_exists($user_root_dir)) {
     mkdir($user_root_dir, 0777, true);
@@ -66,12 +66,12 @@ if (isset($_POST['photo_form'])) {
 
 if (isset($_POST['file_form'])) {
 
-    $file = $_FILES['file'];
-    //var_dump($file);
+    $file = $_FILES['berkas'];
+    var_dump($file);
 
     // Check uploaded file type, reject if doesn't match
-    if (!preg_match("/^application\/(zip|x-zip-compressed|x-rar-compressed|vnd\.rar|rar|octet-stream)|multipart\/x-zip$/", $file['type'])) {
-        $errors[] = "Tipe file tidak sesuai! File hanya dapat berupa format .rar atau .zip.";
+    if (!preg_match("/^application\/pdf$/", $file['type'])) {
+        $errors[] = "Tipe file tidak sesuai! File hanya dapat berupa format .pdf.";
     }
 
     if (count($errors) == 0) {

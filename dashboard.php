@@ -28,6 +28,8 @@
         <h2 id="welcome">Welcome, <?= $accountData['name'] ?></h2>
     </div>    
 
+    <button><a href="logout.php"> Logout </a></button>
+
     <section id="foto">
         <?php
             if (is_null($accountData['photo_url'])) { ?>
@@ -36,9 +38,9 @@
 
         <div class="img-wrapper">
             <img id="foto-ganteng" alt="Si ganteng" height="400" src="<?php 
-                if (is_null($accountData['photo_url'])) { echo "assets-img-placehodler_photo.jpg"; }
-                else { pathinfo($accountData['photo_url'], PATHINFO_BASENAME); } ?>" >
-                
+                if (is_null($accountData['photo_url'])) { echo "assets-img-placeholder_photo.jpg"; }
+                else { echo (pathinfo($accountData['photo_url'], PATHINFO_BASENAME)); } ?>" >
+
             <?php if($accountData['photo_flag'] == 1) { ?>
                 <label class="notification-wrapper notification">
                     <span class="notification-description"> Foto sedang dalam review. Notifikasi ini akan hilang ketika sudah selesai. </span>
@@ -51,7 +53,7 @@
             <?php } ?>
         </div>
 
-        <form action="" method="POST">
+        <form action="" method="POST" encType="multipart/form-data">
             <label class="input-wrapper" id="photoWrapper">
                 <span class="input-label">Upload your beautiful face</span>
                 <input type="file" name="photo" accept="image/*" class="form-control-file" required <?php if($accountData['photo_flag'] == 1) { ?> disabled <?php } ?>>
@@ -83,7 +85,7 @@
             </label>
         <?php } ?>
 
-        <form action="" method="POST">
+        <form action="" method="POST" encType="multipart/form-data">
 
             <?php if ((count($errors) > 0) && (isset($_POST['file_form']))) { ?>
                 <div class="notification-wrapper warning">
@@ -97,7 +99,7 @@
                 <?php if($accountData['file_flag'] == 3) { ?>
                     <span class="input-label">Upload new file</span>
                 <?php } ?>
-                <input type="file" name="file" accept="application/pdf" class="form-control-file" required <?php if($accountData['file_flag'] == 1) { ?> disabled <?php } ?>>
+                <input type="file" name="berkas" accept="application/pdf" class="form-control-file" required <?php if($accountData['file_flag'] == 1) { ?> disabled <?php } ?>>
             </label>
 
             <button type="submit" name="file_form" class="button action-button">Kunci Berkas</button>
