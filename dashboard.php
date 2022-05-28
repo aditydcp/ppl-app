@@ -35,7 +35,10 @@
         <?php } ?>
 
         <div class="img-wrapper">
-            <img id="foto-ganteng" src="assets-img-placeholder_photo.jpg" alt="Si ganteng" height="400">
+            <img id="foto-ganteng" alt="Si ganteng" height="400" src="<?php 
+                if (is_null($accountData['photo_url'])) { echo "assets-img-placehodler_photo.jpg"; }
+                else { pathinfo($accountData['photo_url'], PATHINFO_BASENAME); } ?>" >
+                
             <?php if($accountData['photo_flag'] == 1) { ?>
                 <label class="notification-wrapper notification">
                     <span class="notification-description"> Foto sedang dalam review. Notifikasi ini akan hilang ketika sudah selesai. </span>
@@ -76,7 +79,7 @@
             <label class="notification-wrapper success">
                 <span class="notification-description"> Berkas Anda telah diterima. </span>
                 <br>
-                <span class="notification-description"> [insert nama file] </span>
+                <span class="notification-description"> <?= pathinfo($accountData['file_url'], PATHINFO_BASENAME) ?> </span>
             </label>
         <?php } ?>
 

@@ -22,7 +22,7 @@ ini_set('max_input_time', 900);
 ini_set('max_execution_time', 900);
 
 // Prepare the upload directory
-$user_root_dir = "/ppl-app/user-uploads/user-$user_id";
+$user_root_dir = "/ppl-app";
 // create directory if not exist
 if (!file_exists($user_root_dir)) {
     mkdir($user_root_dir, 0777, true);
@@ -49,7 +49,7 @@ if (isset($_POST['photo_form'])) {
 
     if (count($errors) == 0) {
 
-        $target_file_path = "$user_root_dir/foto.".strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $target_file_path = "$user_root_dir/user-$user_id-foto.".strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if (move_uploaded_file($file['tmp_name'], $target_file_path)) {
             mysqli_query($conn, "UPDATE competitors SET photo_flag=1, photo_url='$target_file_path' WHERE email='$email'");
             header("Location: /ppl-app/dashboard.php");
@@ -76,7 +76,7 @@ if (isset($_POST['file_form'])) {
 
     if (count($errors) == 0) {
 
-        $target_file_path = "$user_root_dir/proposed_solution.".strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $target_file_path = "$user_root_dir/user-$user_id-file.".strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if (move_uploaded_file($file['tmp_name'], $target_file_path)) {
             mysqli_query($conn, "UPDATE competitors SET file_flag=1, file_url='$target_file_path' WHERE email='$email'");
             header("Location: /ppl-app/dashboard.php");
