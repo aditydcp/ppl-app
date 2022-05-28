@@ -72,8 +72,14 @@ input {
 }
 
 .form-control-file {
-    width: 30%;
+    width: 18%;
     margin: auto;
+}
+
+@media screen and (max-width: 1500px) {
+    .form-control-file {
+        width: 30%;
+    }
 }
 
 .form-alert {
