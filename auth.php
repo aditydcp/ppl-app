@@ -114,8 +114,8 @@ if (isset($_POST['login_form'])) {
     }
   
     if (count($errors) == 0) {
-        $query = "SELECT * FROM competitors WHERE email='$email' AND password='$password'";
-        $results = mysqli_query($conn, $query);
+        $user_query = "SELECT * FROM competitors WHERE email='$email' AND password='$password'";
+        $results = mysqli_query($conn, $user_query);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['email'] = $email;
           header('Location: /ppl-app/dashboard.php'); //go to dashboard
