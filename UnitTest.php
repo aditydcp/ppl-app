@@ -2,7 +2,6 @@
 session_start();
 use PHPUnit\Framework\TestCase;
 
-
 final class UnitTest extends TestCase
 {
     public function testConnection(): mysqli
@@ -280,6 +279,7 @@ final class UnitTest extends TestCase
         if (count($errors) == 0) {
             $user_query = "SELECT * FROM competitors WHERE email='$email' AND password='$password' LIMIT 1";
             $user = mysqli_query($conn, $user_query);
+            $user_data = mysqli_fetch_assoc($user);
             $result = mysqli_num_rows($user);
             if ($result == 1) {
                 $_SESSION['email'] = $email;
@@ -290,7 +290,7 @@ final class UnitTest extends TestCase
         $this->assertEquals(1, $result); // we expected that there will only be 1 result -> successful login
         $this->assertEquals($email, $_SESSION['email']); // we expect that email is passed to the session var 'email'
 
-        return $user['id']; // this id will be used in InsertPhoto and InsertFile test cases
+        return (int)$user_data['id']; // this id will be used in InsertPhoto and InsertFile test cases
     }
 
     /**
@@ -304,7 +304,7 @@ final class UnitTest extends TestCase
         $password = "randompassword";
         $errors = array();
         $_SESSION['email'] = "";
-        $result = null;
+        $result = 0;
 
         // do
         if (empty($email)) {
@@ -324,7 +324,7 @@ final class UnitTest extends TestCase
         }
 
         // then
-        $this->assertNull($result); // assertNull because we expect no resulting record
+        $this->assertEquals(0, $result); // assert equal to 0 because we expect 0 resulting record
         $this->assertEmpty($_SESSION['email']); // assertEmpty because we expect nothing passed into session variable 'email'
     }
 
