@@ -365,17 +365,57 @@ final class UnitTest extends TestCase
 
     /**
      * @depends testConnection
+     * @depends testLogin
      */
-    public function testUploadFilePdf(mysqli $conn, int $id): void
+    public function testAcceptData(mysqli $conn, int $id): void
     {
-        // this is the code in auth.php for login
         // given initials
-        
+        $photo_flag = "";
+        $file_flag = "";
 
         // do
-        
+        // this is the code in admin.php for accepting photo and file
+        mysqli_query($conn, "UPDATE competitors SET photo_flag=3 WHERE id=$id"); // accept photo
+        mysqli_query($conn, "UPDATE competitors SET file_flag=3 WHERE id=$id"); // accept file
+
+        // fetch the flags from database
+        $account_query = "SELECT * from competitors WHERE id='$id' LIMIT 1";
+        $account_query_result = mysqli_query($conn, $account_query);
+        $account_data = mysqli_fetch_assoc($account_query_result);
+        $photo_flag = $account_data['photo_flag'];
+        $file_flag = $account_data['file_flag'];
 
         // then
-        
+        // assert equal to 3 because 3 is the flag for accepted data
+        $this->assertEquals(3, $photo_flag);
+        $this->assertEquals(3, $file_flag);
+    }
+
+    /**
+     * @depends testConnection
+     * @depends testLogin
+     */
+    public function testRejectData(mysqli $conn, int $id): void
+    {
+        // given initials
+        $photo_flag = "";
+        $file_flag = "";
+
+        // do
+        // this is the code in admin.php for rejecting photo and file
+        mysqli_query($conn, "UPDATE competitors SET photo_flag=2 WHERE id=$id"); // accept photo
+        mysqli_query($conn, "UPDATE competitors SET file_flag=2 WHERE id=$id"); // accept file
+
+        // fetch the flags from database
+        $account_query = "SELECT * from competitors WHERE id='$id' LIMIT 1";
+        $account_query_result = mysqli_query($conn, $account_query);
+        $account_data = mysqli_fetch_assoc($account_query_result);
+        $photo_flag = $account_data['photo_flag'];
+        $file_flag = $account_data['file_flag'];
+
+        // then
+        // assert equal to 2 because 2 is the flag for rejected data
+        $this->assertEquals(2, $photo_flag);
+        $this->assertEquals(2, $file_flag);
     }
 }
